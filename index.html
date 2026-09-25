@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- SEO & Social Meta Tags -->
+  <title>Ankit Baghel | Senior Full Stack Developer & Cloud Architect</title>
+  <meta name="description" content="Portfolio of Ankit Baghel, Senior Full Stack Developer & Distributed Systems Architect specializing in React, Next.js, Node.js, Python, AWS, and high-concurrency microservices.">
+  <meta name="keywords" content="Senior Full Stack Developer, Software Architect, React, Next.js, Node.js, TypeScript, Python, AWS, Kubernetes, Distributed Systems">
+  <meta name="author" content="Ankit Baghel">
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ankit Baghel | Senior Full Stack Developer Portfolio">
+  <meta property="og:description" content="Senior Full Stack Developer & Cloud Architect crafting resilient microservices, high-scale web platforms, and reactive user experiences.">
+  <meta property="og:image" content="assets/images/profile.jpg">
+  
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  
+  <!-- Favicon Monogram -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%232563eb'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='48' fill='white'>AB</text></svg>">
+</head>
+<body>
+
+  <!-- Ambient Glow Background Orbs -->
+  <div class="bg-ambient-orb bg-orb-1" aria-hidden="true"></div>
+  <div class="bg-ambient-orb bg-orb-2" aria-hidden="true"></div>
+
+  <!-- ==========================================================================
+       SITE HEADER & NAVIGATION
+       ========================================================================== -->
+  <header class="site-header" id="header">
+    <div class="container nav-container">
+      <!-- Monogram Brand Logo -->
+      <a href="#home" class="brand-logo" aria-label="Ankit Baghel Portfolio Home">
+        <div class="logo-badge">AB</div>
+        <div class="logo-text">
+          <span class="logo-name">Ankit Baghel</span>
+          <span class="logo-tag">Senior Full Stack</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#blog" class="nav-link">Insights</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Actions (Theme Switcher & Mobile Menu) -->
+      <div class="nav-actions">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark/light mode" title="Toggle Theme">
+          <!-- Populated dynamically by theme.js -->
+        </button>
+
+        <a href="#contact" class="btn btn-primary btn-sm d-none-mobile">
+          <span>Let's Talk</span>
+        </a>
+
+        <!-- Mobile Drawer Toggle -->
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION (Blueprint Item 1 & 2)
+         ========================================================================== -->
+    <section class="hero-section section" id="home">
+      <div class="container">
+        <div class="hero-grid">
+          <!-- Hero Text Content -->
+          <div class="hero-content">
+            <div class="hero-greeting">
+              <span class="status-dot"></span>
+              <span>Available for Senior Full Stack & Architect Roles</span>
+            </div>
+
+            <h1 class="hero-title">
+              Hello, I'm <br>
+              <span class="text-gradient">Ankit Baghel</span>
+            </h1>
+
+            <div class="hero-subtitle">
+              <span>Senior Full Stack Developer</span>
+              <span style="color: var(--accent-cyan);">|</span>
+              <span>Cloud & System Architect</span>
+            </div>
+
+            <p class="hero-bio">
+              Transforming complex engineering challenges into high-concurrency microservices, resilient cloud architectures, and pixel-perfect reactive web applications. 7+ years of delivering scalable digital products.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary btn-lg">
+                <span>View My Work</span>
+                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+
+              <button class="btn btn-secondary btn-lg trigger-resume-modal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Download Resume</span>
+              </button>
+            </div>
+
+            <!-- Highlights Bar (Stats) -->
+            <div class="hero-stats-card">
+              <div class="stat-item">
+                <div class="stat-number">7+</div>
+                <div class="stat-label">Years Experience</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">150K+</div>
+                <div class="stat-label">Active Users Served</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Shipped Solutions</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">99.99%</div>
+                <div class="stat-label">Production Uptime</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Visual & Portrait -->
+          <div class="hero-visual">
+            <div class="profile-card-wrapper">
+              <div class="profile-glow-backdrop"></div>
+              
+              <!-- Floating Tech Badges -->
+              <div class="floating-badge badge-top-left">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+                <span>Full Stack • Next.js</span>
+              </div>
+
+              <div class="floating-badge badge-bottom-right">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                  <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                  <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                </svg>
+                <span>Cloud & AWS Architect</span>
+              </div>
+
+              <!-- Main Profile Image -->
+              <div class="profile-image-box">
+                <img src="assets/images/profile.jpg" alt="Ankit Baghel - Senior Full Stack Developer" class="profile-img" width="500" height="500">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ABOUT ME SECTION (Blueprint Item 1 & 2)
+         ========================================================================== -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Background & Expertise</span>
+          <h2>About <span class="text-gradient">Me</span></h2>
+          <p>A blend of architectural engineering, hands-on fullstack execution, and team leadership to turn complex requirements into high-value solutions.</p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Left Column: Portrait & Core Traits -->
+          <div class="about-portrait-card">
+            <div class="about-portrait-box">
+              <img src="assets/images/profile.jpg" alt="Ankit Baghel" loading="lazy">
+              <div class="about-profile-info">
+                <h3>Ankit Baghel</h3>
+                <p>Senior Full Stack & Cloud Architect</p>
+              </div>
+            </div>
+
+            <!-- Core Trait Badges (Blueprint Style) -->
+            <div class="core-traits-grid">
+              <div class="trait-card">
+                <div class="trait-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="12 6 12 12 16 14"></polygon></svg>
+                </div>
+                <div class="trait-details">
+                  <h4>Problem Solver</h4>
+                  <p>Algorithmic precision & low-latency execution</p>
+                </div>
+              </div>
+
+              <div class="trait-card">
+                <div class="trait-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+                </div>
+                <div class="trait-details">
+                  <h4>System Architect</h4>
+                  <p>Microservices, Kafka events & cloud native</p>
+                </div>
+              </div>
+
+              <div class="trait-card">
+                <div class="trait-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                </div>
+                <div class="trait-details">
+                  <h4>Process Optimizer</h4>
+                  <p>LEAN methodologies, CI/CD & sub-second loads</p>
+                </div>
+              </div>
+
+              <div class="trait-card">
+                <div class="trait-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <div class="trait-details">
+                  <h4>Team Leader</h4>
+                  <p>Cross-functional mentoring & agile delivery</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Tabs (Journey, Education, Certifications) -->
+          <div class="about-tabs-container">
+            <div class="about-nav-tabs" role="tablist">
+              <button class="tab-btn active" data-tab="journey" role="tab" aria-selected="true">My Journey</button>
+              <button class="tab-btn" data-tab="education" role="tab" aria-selected="false">Education</button>
+              <button class="tab-btn" data-tab="certifications" role="tab" aria-selected="false">Certifications</button>
+            </div>
+
+            <!-- Tab 1: Journey -->
+            <div class="tab-content active" id="tab-journey">
+              <div class="timeline-list">
+                <div class="timeline-node">
+                  <div class="timeline-node-header">
+                    <span class="timeline-role">Lead Full Stack Engineer</span>
+                    <span class="timeline-date">2024 – Present</span>
+                  </div>
+                  <div class="timeline-company">TechVentures / Enterprise Cloud Systems</div>
+                  <p class="timeline-desc">Leading distributed architecture across Next.js, Node.js, and AWS for mission-critical SaaS serving over 150,000 active enterprise users. Mentoring a squad of 14 senior engineers.</p>
+                </div>
+
+                <div class="timeline-node">
+                  <div class="timeline-node-header">
+                    <span class="timeline-role">Senior Full Stack Developer</span>
+                    <span class="timeline-date">2022 – 2024</span>
+                  </div>
+                  <div class="timeline-company">Nexus Enterprise Solutions</div>
+                  <p class="timeline-desc">Architected real-time order matching microservices with FastAPI and Redis, cutting order turnaround to under 1.2ms. Modernized core web apps with React and TypeScript.</p>
+                </div>
+
+                <div class="timeline-node">
+                  <div class="timeline-node-header">
+                    <span class="timeline-role">Full Stack Software Engineer</span>
+                    <span class="timeline-date">2020 – 2022</span>
+                  </div>
+                  <div class="timeline-company">Apex Global Systems</div>
+                  <p class="timeline-desc">Designed responsive dashboards, automated continuous integration pipelines with GitHub Actions, and reduced database indexing latency by 40% on PostgreSQL.</p>
+                </div>
+
+                <div class="timeline-node">
+                  <div class="timeline-node-header">
+                    <span class="timeline-role">Software Developer</span>
+                    <span class="timeline-date">Earlier</span>
+                  </div>
+                  <div class="timeline-company">Wipro Technologies</div>
+                  <p class="timeline-desc">Maintained enterprise web systems, created automated reporting modules, and standardized ITIL service workflows.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 2: Education -->
+            <div class="tab-content" id="tab-education">
+              <div class="timeline-list">
+                <div class="timeline-node">
+                  <div class="timeline-node-header">
+                    <span class="timeline-role">B.Tech in Computer Science & Engineering</span>
+                    <span class="timeline-date">High Honors</span>
+                  </div>
+                  <div class="timeline-company">Premier Institute of Technology</div>
+                  <p class="timeline-desc">Focused on Distributed Systems, Advanced Algorithms, Database Management Systems, and Cloud Computing. Graduated with Academic Excellence Award (GPA: 3.9/4.0).</p>
+                </div>
+                <div class="timeline-node">
+                  <div class="timeline-node-header">
+                    <span class="timeline-role">Software Systems Research Fellow</span>
+                    <span class="timeline-date">Undergraduate Honors</span>
+                  </div>
+                  <div class="timeline-company">Advanced Computing Laboratory</div>
+                  <p class="timeline-desc">Published research paper on high-throughput distributed caching algorithms and fault-tolerant consensus mechanisms.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 3: Certifications -->
+            <div class="tab-content" id="tab-certifications">
+              <div class="timeline-list">
+                <div class="timeline-node">
+                  <div class="timeline-node-header">
+                    <span class="timeline-role">AWS Certified Solutions Architect – Professional</span>
+                    <span class="timeline-date">Amazon Web Services</span>
+                  </div>
+                  <div class="timeline-company">Credential ID: AWS-PSA-749102</div>
+                  <p class="timeline-desc">Mastery in designing distributed multi-region systems, hybrid cloud interconnects, and resilient auto-scaling infrastructure on AWS.</p>
+                </div>
+                <div class="timeline-node">
+                  <div class="timeline-node-header">
+                    <span class="timeline-role">Certified Kubernetes Administrator (CKA)</span>
+                    <span class="timeline-date">Cloud Native Computing Foundation</span>
+                  </div>
+                  <div class="timeline-company">Linux Foundation</div>
+                  <p class="timeline-desc">Validated expertise in cluster architecture, container networking, ingress controllers, persistent volumes, and zero-downtime maintenance.</p>
+                </div>
+                <div class="timeline-node">
+                  <div class="timeline-node-header">
+                    <span class="timeline-role">Meta Senior Full Stack Engineer Certification</span>
+                    <span class="timeline-date">Meta Platforms</span>
+                  </div>
+                  <div class="timeline-company">Advanced React, Django & Cloud Architecture</div>
+                  <p class="timeline-desc">Demonstrated leadership in end-to-end fullstack development, UX design principles, and automated performance testing.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SKILLS & TOOLS SECTION (Blueprint Item 1)
+         ========================================================================== -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Technical Stack</span>
+          <h2>Skills & <span class="text-gradient">Tools</span></h2>
+          <p>A full-spectrum engineering toolkit covering modern frontend frameworks, distributed backends, cloud databases, and DevOps orchestration.</p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Skill Card 1: Frontend Engineering -->
+          <div class="skill-category-card">
+            <h3 class="skill-category-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              <span>Frontend Architecture</span>
+            </h3>
+
+            <div class="tech-pills-grid">
+              <span class="tech-pill">React 19</span>
+              <span class="tech-pill">Next.js (App Router)</span>
+              <span class="tech-pill">TypeScript</span>
+              <span class="tech-pill">Tailwind & Modern CSS</span>
+              <span class="tech-pill">WebAssembly</span>
+              <span class="tech-pill">WebRTC</span>
+              <span class="tech-pill">HTML5 / Semantic A11y</span>
+            </div>
+
+            <div class="skill-progress-list">
+              <div>
+                <div class="progress-header">
+                  <span class="progress-name">React / Next.js / TypeScript</span>
+                  <span class="progress-score">9.5 / 10</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill" style="width: 95%;"></div></div>
+              </div>
+
+              <div>
+                <div class="progress-header">
+                  <span class="progress-name">Modern CSS, Responsive UI & Web Vitals</span>
+                  <span class="progress-score">9.0 / 10</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill" style="width: 90%;"></div></div>
+              </div>
+
+              <div>
+                <div class="progress-header">
+                  <span class="progress-name">State Management (Zustand, Redux, TanStack)</span>
+                  <span class="progress-score">8.8 / 10</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill" style="width: 88%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill Card 2: Backend & Distributed Systems -->
+          <div class="skill-category-card">
+            <h3 class="skill-category-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+              <span>Backend & Cloud Infrastructure</span>
+            </h3>
+
+            <div class="tech-pills-grid">
+              <span class="tech-pill">Node.js</span>
+              <span class="tech-pill">Python / FastAPI</span>
+              <span class="tech-pill">Go</span>
+              <span class="tech-pill">PostgreSQL</span>
+              <span class="tech-pill">Redis</span>
+              <span class="tech-pill">Apache Kafka</span>
+              <span class="tech-pill">Docker & K8s</span>
+              <span class="tech-pill">AWS (ECS, Lambda, S3)</span>
+            </div>
+
+            <div class="skill-progress-list">
+              <div>
+                <div class="progress-header">
+                  <span class="progress-name">Node.js, Express & Microservices</span>
+                  <span class="progress-score">9.2 / 10</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill" style="width: 92%;"></div></div>
+              </div>
+
+              <div>
+                <div class="progress-header">
+                  <span class="progress-name">Cloud Architecture & AWS Services</span>
+                  <span class="progress-score">8.8 / 10</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill" style="width: 88%;"></div></div>
+              </div>
+
+              <div>
+                <div class="progress-header">
+                  <span class="progress-name">Databases (PostgreSQL, Redis, TimescaleDB)</span>
+                  <span class="progress-score">9.0 / 10</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill" style="width: 90%;"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Methodologies & Best Practices Row (Blueprint Match) -->
+        <div class="methodologies-wrapper">
+          <h3 class="methodologies-title">Engineering Methodologies & Standards</h3>
+          <div class="methodologies-list">
+            <span class="methodology-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>ITIL v4 Framework</span>
+            </span>
+            <span class="methodology-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              <span>LEAN Six Sigma</span>
+            </span>
+            <span class="methodology-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              <span>Agile / Scrum Leadership</span>
+            </span>
+            <span class="methodology-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span>CMMI Level 5 Standards</span>
+            </span>
+            <span class="methodology-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <span>Zero-Trust Security & RBAC</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FEATURED PROJECTS SECTION (Blueprint Item 1 & 2)
+         ========================================================================== -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Portfolio Showcase</span>
+          <h2>Featured <span class="text-gradient">Projects</span></h2>
+          <p>Real-world production systems showcasing full-stack precision, distributed microservices, low-latency APIs, and modern responsive UI.</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="project-filters">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="fullstack">Full Stack SaaS</button>
+          <button class="filter-btn" data-filter="backend">Backend & Cloud</button>
+          <button class="filter-btn" data-filter="frontend">Frontend & AI</button>
+        </div>
+
+        <!-- Dynamic Projects Grid (Rendered by main.js) -->
+        <div class="projects-grid" id="projectsContainer">
+          <!-- Dynamically populated from portfolioData.projects -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         PROFESSIONAL EXPERIENCE SECTION (Blueprint Item 1)
+         ========================================================================== -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Career Trajectory</span>
+          <h2>Professional <span class="text-gradient">Experience</span></h2>
+          <p>Track record of architecting mission-critical platforms, leading high-performance engineering teams, and optimizing bottom-line metrics.</p>
+        </div>
+
+        <div class="experience-timeline">
+          <!-- Role 1 -->
+          <div class="experience-card reveal-on-scroll">
+            <div class="exp-indicator"></div>
+            <div class="exp-header">
+              <div>
+                <h3 class="exp-role-title">Lead Full Stack & Cloud Architect</h3>
+                <div class="exp-company">TechVentures / Enterprise Cloud Platform</div>
+              </div>
+              <div class="exp-date-badge">2024 – Present</div>
+            </div>
+
+            <ul class="exp-bullets">
+              <li>Direct the end-to-end technical architecture of an enterprise SaaS platform deployed across 4 AWS global regions, maintaining 99.98% SLA availability.</li>
+              <li>Engineered a real-time event streaming pipeline using Apache Kafka and Redis, processing over 250,000 telemetry events per minute.</li>
+              <li>Mentored 14 engineers across 4 time zones, conducting rigorous system design and code quality reviews.</li>
+              <li>Spearheaded LEAN Six Sigma process standardizations, reducing quarterly cloud infrastructure expenses by $120,000.</li>
+            </ul>
+
+            <div class="exp-tech-stack">
+              <span class="tag">Next.js</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">AWS ECS</span>
+              <span class="tag">Kafka</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Docker</span>
+            </div>
+          </div>
+
+          <!-- Role 2 -->
+          <div class="experience-card reveal-on-scroll">
+            <div class="exp-indicator"></div>
+            <div class="exp-header">
+              <div>
+                <h3 class="exp-role-title">Senior Full Stack Developer</h3>
+                <div class="exp-company">Nexus Enterprise Solutions</div>
+              </div>
+              <div class="exp-date-badge">2022 – 2024</div>
+            </div>
+
+            <ul class="exp-bullets">
+              <li>Architected high-throughput financial trading and order matching microservices with FastAPI and TimescaleDB, achieving sub-millisecond execution latencies.</li>
+              <li>Migrated monolithic legacy codebase to Dockerized microservices orchestrated via Kubernetes, reducing release deployment cycles from 2 weeks to 2 hours.</li>
+              <li>Designed responsive React web portals with real-time WebSockets, boosting Core Web Vitals performance scores to 98+.</li>
+              <li>Implemented automated CI/CD testing pipelines with Jest and Playwright, preventing over 40 critical regression defects.</li>
+            </ul>
+
+            <div class="exp-tech-stack">
+              <span class="tag">React</span>
+              <span class="tag">Python / FastAPI</span>
+              <span class="tag">Redis</span>
+              <span class="tag">Kubernetes</span>
+              <span class="tag">WebSockets</span>
+              <span class="tag">TimescaleDB</span>
+            </div>
+          </div>
+
+          <!-- Role 3 -->
+          <div class="experience-card reveal-on-scroll">
+            <div class="exp-indicator"></div>
+            <div class="exp-header">
+              <div>
+                <h3 class="exp-role-title">Full Stack Software Engineer</h3>
+                <div class="exp-company">Apex Global Systems</div>
+              </div>
+              <div class="exp-date-badge">2020 – 2022</div>
+            </div>
+
+            <ul class="exp-bullets">
+              <li>Constructed enterprise vendor management dashboards and analytics portals using Node.js, Express, and PostgreSQL.</li>
+              <li>Integrated Stripe Connect and PayPal automated multi-currency checkout workflows with automated reconciliation.</li>
+              <li>Optimized complex SQL queries and composite indexing, reducing database response times by 42%.</li>
+            </ul>
+
+            <div class="exp-tech-stack">
+              <span class="tag">Node.js</span>
+              <span class="tag">Express</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">Stripe API</span>
+            </div>
+          </div>
+
+          <!-- Role 4 -->
+          <div class="experience-card reveal-on-scroll">
+            <div class="exp-indicator"></div>
+            <div class="exp-header">
+              <div>
+                <h3 class="exp-role-title">Systems & Software Engineer</h3>
+                <div class="exp-company">Wipro Technologies</div>
+              </div>
+              <div class="exp-date-badge">2018 – 2020</div>
+            </div>
+
+            <ul class="exp-bullets">
+              <li>Automated IT infrastructure workflows using Python scripts and Linux shell commands, saving 15 hours of manual work weekly.</li>
+              <li>Maintained enterprise ticketing and incident dispatch systems under strict ITIL service-level agreements.</li>
+            </ul>
+
+            <div class="exp-tech-stack">
+              <span class="tag">Python</span>
+              <span class="tag">Linux</span>
+              <span class="tag">ITIL v4</span>
+              <span class="tag">Bash</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INSIGHTS & ARTICLES SECTION (Blueprint Item 1)
+         ========================================================================== -->
+    <section class="section" id="blog">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Thought Leadership</span>
+          <h2>Insights & <span class="text-gradient">Articles</span></h2>
+          <p>Writing on distributed systems, zero-downtime deployments, modern web performance, and software engineering leadership.</p>
+        </div>
+
+        <div class="articles-grid">
+          <!-- Article 1 -->
+          <article class="article-card open-article-modal reveal-on-scroll" data-id="k8s-zero-downtime">
+            <div class="article-thumbnail-box">
+              <img src="assets/images/blog-k8s.jpg" alt="Kubernetes Canary Releases" class="article-thumbnail" loading="lazy">
+            </div>
+            <div class="article-body">
+              <div class="article-meta">
+                <span class="article-category">DevOps & Cloud</span>
+                <span>Sep 15, 2026</span>
+              </div>
+              <h3 class="article-title">Architecting Zero-Downtime Deployments with Kubernetes and Canary Releases</h3>
+              <p class="article-summary">A step-by-step guide to progressive delivery, Prometheus SLI metric validation, and automated rollback heuristics.</p>
+              <div class="article-footer">
+                <span>Read Full Article</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="article-card open-article-modal reveal-on-scroll" data-id="react-core-web-vitals">
+            <div class="article-thumbnail-box">
+              <img src="assets/images/blog-performance.jpg" alt="Web Performance Optimization" class="article-thumbnail" loading="lazy">
+            </div>
+            <div class="article-body">
+              <div class="article-meta">
+                <span class="article-category">Frontend Architecture</span>
+                <span>Aug 10, 2026</span>
+              </div>
+              <h3 class="article-title">Optimizing Next.js & React Core Web Vitals to a Perfect 100 Lighthouse Score</h3>
+              <p class="article-summary">Deep dive into sub-second LCP, eliminating INP latency, and eliminating layout shifts with modern CSS features.</p>
+              <div class="article-footer">
+                <span>Read Full Article</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 3 -->
+          <article class="article-card open-article-modal reveal-on-scroll" data-id="event-driven-microservices">
+            <div class="article-thumbnail-box">
+              <img src="assets/images/blog-microservices.jpg" alt="Event-Driven Microservices" class="article-thumbnail" loading="lazy">
+            </div>
+            <div class="article-body">
+              <div class="article-meta">
+                <span class="article-category">System Design</span>
+                <span>Jul 25, 2026</span>
+              </div>
+              <h3 class="article-title">From Monolith to Event-Driven Microservices: Real-World Lessons & Pitfalls</h3>
+              <p class="article-summary">Architectural strategies for asynchronous domain events, outbox patterns, and distributed Sagas at scale.</p>
+              <div class="article-footer">
+                <span>Read Full Article</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CALL TO ACTION BANNER (Blueprint Item 2: "Let's Build Something Great")
+         ========================================================================== -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-banner">
+          <div class="cta-text-content">
+            <h2>Let's Build Something Great</h2>
+            <p>Open to high-impact technical leadership roles, engineering advisory, and contract system architectures.</p>
+          </div>
+          <div>
+            <a href="#contact" class="btn btn-lg">
+              <span>Get In Touch</span>
+              <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CONTACT SECTION (Blueprint Item 1 & 2)
+         ========================================================================== -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Get In Touch</span>
+          <h2>Connect & <span class="text-gradient">Collaborate</span></h2>
+          <p>Have an ambitious project, technical challenge, or leadership opportunity? Send a message and let's discuss.</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left Column: Contact Methods & Socials -->
+          <div class="contact-info-card">
+            <h3 style="font-size: 1.35rem; margin-bottom: 0.5rem;">Contact Information</h3>
+            <p style="font-size: 0.95rem; color: var(--text-muted);">I prioritize responsive communication and typically respond within 12-24 hours.</p>
+
+            <div class="contact-method-item">
+              <div class="contact-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div class="contact-method-details">
+                <h4>Direct Email</h4>
+                <a href="mailto:ankit.baghel.dev@gmail.com">ankit.baghel.dev@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-method-item">
+              <div class="contact-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div class="contact-method-details">
+                <h4>Location</h4>
+                <p>Bengaluru, India (Available for Global Remote & Relocation)</p>
+              </div>
+            </div>
+
+            <div class="contact-method-item">
+              <div class="contact-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div class="contact-method-details">
+                <h4>Working Hours / Timezone</h4>
+                <p>IST (UTC+5:30) • Overlaps with US & European business hours</p>
+              </div>
+            </div>
+
+            <!-- Social Links (Blueprint Match) -->
+            <div>
+              <h4 style="font-size: 0.92rem; color: var(--text-main); margin-bottom: 0.85rem;">Find Me Online</h4>
+              <div class="social-links-row" style="margin-top: 0; padding-top: 0; border: none;">
+                <a href="https://linkedin.com/in/ankit-baghel" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn Profile" title="LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="https://github.com/Ankitsing78" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="GitHub Profile" title="GitHub">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+                <a href="mailto:ankit.baghel.dev@gmail.com" class="social-icon-btn" aria-label="Direct Email" title="Send Email">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Form (Blueprint Match) -->
+          <div class="contact-form-box">
+            <form class="contact-form" id="contactForm" novalidate>
+              <div id="formAlert" class="form-alert" role="alert"></div>
+
+              <div class="form-group">
+                <label for="contactName" class="form-label">Your Name *</label>
+                <input type="text" id="contactName" name="name" class="form-control" placeholder="e.g. Alex Rivera" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contactEmail" class="form-label">Your Email *</label>
+                <input type="email" id="contactEmail" name="email" class="form-control" placeholder="alex@company.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contactSubject" class="form-label">Subject</label>
+                <input type="text" id="contactSubject" name="subject" class="form-control" placeholder="Project Inquiry / Senior Engineering Role">
+              </div>
+
+              <div class="form-group">
+                <label for="contactMessage" class="form-label">Your Message *</label>
+                <textarea id="contactMessage" name="message" class="form-control" placeholder="Tell me about your project scope, timeline, and architectural goals..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                <span>Send Message</span>
+                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER (Blueprint Item 1 & 2)
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <div class="logo-badge" style="width: 36px; height: 36px; font-size: 0.95rem;">AB</div>
+        <p class="footer-copyright">© 2026 Ankit Baghel. All rights reserved.</p>
+      </div>
+
+      <ul class="footer-links">
+        <li><a href="#home" class="footer-link">Home</a></li>
+        <li><a href="#about" class="footer-link">About</a></li>
+        <li><a href="#skills" class="footer-link">Skills</a></li>
+        <li><a href="#projects" class="footer-link">Projects</a></li>
+        <li><a href="#experience" class="footer-link">Experience</a></li>
+        <li><a href="#contact" class="footer-link">Contact</a></li>
+      </ul>
+
+      <div style="display: flex; gap: 0.75rem;">
+        <a href="https://linkedin.com/in/ankit-baghel" target="_blank" rel="noopener noreferrer" class="social-icon-btn" style="width: 38px; height: 38px;" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+        <a href="https://github.com/Ankitsing78" target="_blank" rel="noopener noreferrer" class="social-icon-btn" style="width: 38px; height: 38px;" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       UNIVERSAL MODAL (Project Details, Resume, Blog Reader)
+       ========================================================================== -->
+  <div class="modal-overlay" id="universalModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Modal Details</h3>
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Injected dynamically by main.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/projects-data.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
