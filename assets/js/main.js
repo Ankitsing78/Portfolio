@@ -1,6 +1,6 @@
 /**
  * Main Portfolio Application Logic
- * Senior Full Stack Developer & Distributed Systems Architect
+ * Ankit Baghel | Associate Project Manager & PMO Analyst
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -109,10 +109,22 @@ function initProjectFiltering() {
   const container = document.getElementById('projectsContainer');
   const filterBtns = document.querySelectorAll('.filter-btn');
 
-  if (!container || !window.portfolioData) return;
+  if (!container) return;
 
   function renderProjects(filter = 'all') {
-    const projects = window.portfolioData.projects.filter(p => {
+    const data = window.portfolioData || (typeof portfolioData !== 'undefined' ? portfolioData : null);
+    if (!data || !data.projects || !Array.isArray(data.projects)) {
+      console.warn("Portfolio data not available or failed to load projects-data.js.");
+      container.innerHTML = `
+        <div style="grid-column: 1 / -1; padding: 2.5rem; text-align: center; background: var(--bg-card); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <p style="color: var(--text-main); font-weight: 600; font-size: 1.05rem; margin-bottom: 0.5rem;">Project Highlights</p>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Interactive project highlights are temporarily unavailable. Key initiatives include Barista AI Chatbot (52–65% L0 deflection), AWS BCP Automation, IDARS Reporting Platform (10–20 hrs/wk saved), and personal projects tractechspares.com & policiesxray.com.</p>
+        </div>
+      `;
+      return;
+    }
+
+    const projects = data.projects.filter(p => {
       return filter === 'all' || p.category === filter;
     });
 
@@ -122,13 +134,17 @@ function initProjectFiltering() {
           <img src="${proj.image}" alt="${proj.title}" class="project-thumbnail" loading="lazy">
           <div class="project-overlay">
             <div class="project-tags">
-              ${proj.tags.slice(0, 4).map(t => `<span class="tag">${t}</span>`).join('')}
+              ${proj.isPersonal ? `<span class="tag" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border-color: rgba(52, 211, 153, 0.4); font-weight: 600;">Personal / Hobby</span>` : ''}
+              ${proj.tags.slice(0, 3).map(t => `<span class="tag">${t}</span>`).join('')}
             </div>
           </div>
         </div>
 
         <div class="project-body">
-          <h3 class="project-title">${proj.title}</h3>
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.35rem;">
+            <h3 class="project-title" style="margin-bottom: 0;">${proj.title}</h3>
+          </div>
+          ${proj.isPersonal ? `<div style="margin-bottom: 0.5rem;"><span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; color: #10b981;">Personal Project &bull; Built with AI</span></div>` : ''}
           <p class="project-desc">${proj.subtitle}</p>
 
           <div class="project-metrics-row">
@@ -142,19 +158,30 @@ function initProjectFiltering() {
 
           <div class="project-footer">
             <button class="btn btn-primary btn-sm open-project-modal" data-id="${proj.id}">
-              <span>View Project</span>
+              <span>View Details</span>
               <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </button>
 
-            <a href="${proj.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" aria-label="GitHub Repository">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-              </svg>
-              <span>Code</span>
-            </a>
+            ${proj.isPersonal ? `
+              <a href="${proj.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" aria-label="Visit ${proj.title} Live Site">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+                <span>Live Site</span>
+              </a>
+            ` : `
+              <a href="${proj.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" aria-label="GitHub Repository">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span>Code</span>
+              </a>
+            `}
           </div>
         </div>
       </article>
@@ -217,7 +244,9 @@ function initModals() {
 
   // Global open function for Project details
   window.openProjectModal = function(id) {
-    const proj = window.portfolioData.projects.find(p => p.id === id);
+    const data = window.portfolioData || (typeof portfolioData !== 'undefined' ? portfolioData : null);
+    if (!data || !data.projects) return;
+    const proj = data.projects.find(p => p.id === id);
     if (!proj) return;
 
     modalTitle.textContent = proj.title;
@@ -227,6 +256,7 @@ function initModals() {
       </div>
 
       <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+        ${proj.isPersonal ? `<span class="tag" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border-color: rgba(52, 211, 153, 0.4); font-weight: 600;">Personal / Hobby Project (Built with AI Tooling)</span>` : ''}
         ${proj.tags.map(t => `<span class="tag">${t}</span>`).join('')}
       </div>
 
@@ -234,14 +264,14 @@ function initModals() {
         ${proj.description}
       </p>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; background: var(--bg-surface); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-subtle);">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; background: var(--bg-surface); padding: 1.5rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
         <div>
-          <h4 style="color: var(--accent-cyan); margin-bottom: 0.5rem;">The Architecture Challenge</h4>
-          <p style="font-size: 0.95rem; color: var(--text-muted);">${proj.challenge}</p>
+          <h4 style="color: var(--primary-light); margin-bottom: 0.5rem; font-weight: 600;">${proj.isPersonal ? 'Context & Purpose' : 'The Challenge & Context'}</h4>
+          <p style="font-size: 0.92rem; color: var(--text-muted);">${proj.challenge}</p>
         </div>
         <div>
-          <h4 style="color: var(--primary-light); margin-bottom: 0.5rem;">The Engineering Solution</h4>
-          <p style="font-size: 0.95rem; color: var(--text-muted);">${proj.solution}</p>
+          <h4 style="color: var(--primary-light); margin-bottom: 0.5rem; font-weight: 600;">${proj.isPersonal ? 'Implementation Approach' : 'The Delivery Solution'}</h4>
+          <p style="font-size: 0.92rem; color: var(--text-muted);">${proj.solution}</p>
         </div>
       </div>
 
@@ -258,14 +288,21 @@ function initModals() {
       </div>
 
       <div style="display: flex; gap: 1rem; flex-wrap: wrap; border-top: 1px solid var(--border-subtle); padding-top: 1.5rem;">
-        <a href="${proj.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          <span>Live Demo</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-        </a>
-        <a href="${proj.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-          <span>View Source Code</span>
-        </a>
+        ${proj.isPersonal ? `
+          <a href="${proj.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <span>Visit Live Website</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        ` : `
+          <a href="${proj.liveUrl}" class="btn btn-primary">
+            <span>Project Scope (Experience)</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="${proj.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <span>GitHub Profile</span>
+          </a>
+        `}
       </div>
     `;
 
@@ -277,14 +314,20 @@ function initModals() {
   document.querySelectorAll('.trigger-resume-modal').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      modalTitle.textContent = "Senior Full Stack Developer Curriculum Vitae";
+      modalTitle.textContent = "Curriculum Vitae — Ankit Baghel";
       modalBody.innerHTML = `
         <div class="resume-paper">
-          <div class="resume-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+          <div class="resume-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; border-bottom: 2px solid #2563eb; padding-bottom: 1rem; margin-bottom: 1.5rem;">
             <div>
-              <h1 style="font-size: 2rem; margin-bottom: 0.25rem;">Ankit Baghel</h1>
-              <p style="color: #2563eb; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">Senior Full Stack Developer | Distributed Systems Architect</p>
-              <p style="font-size: 0.9rem; color: #64748b;">ankit.baghel.dev@gmail.com • +91 98765 43210 • Bengaluru, India • github.com/Ankitsing78</p>
+              <h1 style="font-size: 2.2rem; font-weight: 800; color: #1e293b; margin-bottom: 0.25rem;">ANKIT BAGHEL</h1>
+              <p style="color: #2563eb; font-weight: 700; font-size: 1.15rem; margin-bottom: 0.4rem;">Associate Project Manager | PMO Analyst</p>
+              <p style="font-size: 0.9rem; color: #475569; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
+                <span>📍 Greater Noida</span> • 
+                <span>🎓 M.Tech (BITS Pilani WILP)</span> • 
+                <span>📞 +91 7302807688</span> • 
+                <span>✉️ <a href="mailto:ankitsingh7836@gmail.com" style="color: #2563eb; text-decoration: underline;">ankitsingh7836@gmail.com</a></span> • 
+                <span>💼 <a href="https://www.linkedin.com/in/ankit-baghel-20ba85176" target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: underline;">linkedin.com/in/ankit-baghel-20ba85176</a></span>
+              </p>
             </div>
             <div>
               <button class="btn btn-primary btn-sm" onclick="window.print()">
@@ -295,79 +338,167 @@ function initModals() {
           </div>
 
           <div class="resume-section">
-            <h2 class="resume-section-title">Professional Summary</h2>
-            <p style="line-height: 1.6; color: #334155;">
-              Results-driven Senior Full Stack Developer and Cloud Architect with 7+ years of experience engineering high-concurrency microservices, real-time data streaming engines, and intuitive enterprise applications. Proven record of leading cross-functional teams, reducing API latencies by up to 45%, and architecting platforms serving 100K+ daily active users with 99.99% availability.
+            <h2 class="resume-section-title">PROFESSIONAL SUMMARY</h2>
+            <p style="line-height: 1.65; color: #334155;">
+              Associate Project Manager and PMO Analyst with 5+ years of experience in technology delivery, PMO operational governance, and business analytics at Wipro Ltd. Proven track record governing $2.2M+ in cumulative vendor budgets across global accounts ($700K+ Levi Strauss, $1.5M Solvay OneDesk), covering end-to-end PO-to-invoice lifecycles and contract compliance. Delivered comprehensive performance monitoring and governance reporting for 100+ cross-functional resources across APAC, EMEA, US, and MEX, and initiated structured employee stack-ranking frameworks to drive operational excellence. Championed reporting automation pipelines on Solvay OneDesk that eliminated 10–20 hours of manual reporting effort weekly. Certified Information Security Administrator Associate (SC-401) with M.Tech in Computing Systems and Infrastructure from BITS Pilani (WILP).
             </p>
           </div>
 
           <div class="resume-section">
-            <h2 class="resume-section-title">Core Competencies</h2>
-            <p style="margin-bottom: 0.5rem;"><strong>Frontend:</strong> React, Next.js (App Router), TypeScript, Vue.js, Tailwind CSS, Modern Vanilla CSS, WebAssembly, WebRTC</p>
-            <p style="margin-bottom: 0.5rem;"><strong>Backend:</strong> Node.js, Express, Python, FastAPI, Go, GraphQL, REST, Microservices, Event-Driven Architecture</p>
-            <p style="margin-bottom: 0.5rem;"><strong>Databases & Cloud:</strong> PostgreSQL, MongoDB, Redis, Apache Kafka, AWS (ECS, Lambda, S3, RDS), Docker, Kubernetes</p>
-            <p><strong>DevOps & Quality:</strong> CI/CD (GitHub Actions), Terraform, Linux, Jest, Playwright, ITIL v4, LEAN Six Sigma</p>
-          </div>
+            <h2 class="resume-section-title">EXPERIENCE</h2>
 
-          <div class="resume-section">
-            <h2 class="resume-section-title">Work Experience</h2>
-            <div style="margin-bottom: 1rem;">
-              <div style="display:flex; justify-content:space-between; font-weight:700;">
-                <span>Lead Full Stack Architect — TechVentures / Global Cloud</span>
-                <span>2024 - Present</span>
+            <!-- Role 1: Solvay -->
+            <div style="margin-bottom: 1.5rem;">
+              <div style="display:flex; justify-content:space-between; align-items: baseline; font-weight:700; color: #1e293b;">
+                <span style="font-size: 1.05rem;">WIPRO Ltd. – Associate Project Manager</span>
+                <span style="color: #2563eb; font-size: 0.95rem;">11/2025 – Present</span>
               </div>
-              <ul style="padding-left: 1.25rem; margin-top: 0.35rem; color: #475569;">
-                <li>Lead architecture of multi-tenant enterprise SaaS deployed across 4 AWS global regions with 99.98% SLA.</li>
-                <li>Pioneered Kafka real-time streaming ingestion pipeline handling 250K+ messages/minute.</li>
-                <li>Mentored team of 14 engineers across frontend, backend, and DevOps disciplines.</li>
+              <div style="font-weight: 600; color: #64748b; font-size: 0.92rem; margin-bottom: 0.5rem;">Account: Solvay OneDesk</div>
+              <ul style="padding-left: 1.25rem; font-size: 0.9rem; color: #475569; line-height: 1.6;">
+                <li><strong>Vendor Lifecycle & Budget Governance:</strong> Owned end-to-end vendor management lifecycle from PO creation to invoice verification across dispatch, FTE, logistics, telecommunications, and asset management, governing a $1.5M vendor budget.</li>
+                <li><strong>Performance Governance & Stack Ranking:</strong> Delivered governance reporting and operational performance monitoring for 48 resources; initiated an employee stack-ranking system to systematically identify top and bottom performers.</li>
+                <li><strong>Financial Controls:</strong> Monitored band-wise PPC (Project Price Cost) and tracked operational expenditure against baseline financial models to ensure zero cost overruns.</li>
+                <li><strong>SLA & KPI Tracking:</strong> Established delivery health metrics that contributed to an 8+ percentage point improvement in SLA performance and a 21–30% reduction in operational backlog.</li>
+                <li><strong>Reporting Automation:</strong> Automated the operational reporting pipeline, eliminating 10–20 hours of manual effort per week and delivering real-time stakeholder visibility.</li>
               </ul>
             </div>
 
-            <div style="margin-bottom: 1rem;">
-              <div style="display:flex; justify-content:space-between; font-weight:700;">
-                <span>Senior Full Stack Developer — Nexus Enterprise Systems</span>
-                <span>2022 - 2024</span>
+            <!-- Role 2: Levi's -->
+            <div style="margin-bottom: 1.5rem;">
+              <div style="display:flex; justify-content:space-between; align-items: baseline; font-weight:700; color: #1e293b;">
+                <span style="font-size: 1.05rem;">WIPRO Ltd. – PMO Analyst / PMO Executive</span>
+                <span style="color: #2563eb; font-size: 0.95rem;">09/2021 – 10/2025</span>
               </div>
-              <ul style="padding-left: 1.25rem; margin-top: 0.35rem; color: #475569;">
-                <li>Migrated core monolithic application into Dockerized microservices, reducing deployment cycle times by 65%.</li>
-                <li>Engineered live order matching engine with FastAPI and Redis, cutting order execution latency to <1.5ms.</li>
-              </ul>
+              <div style="font-weight: 600; color: #64748b; font-size: 0.92rem; margin-bottom: 0.6rem;">Account: Levi Strauss & Co. IT Infrastructure</div>
+
+              <!-- Domain 1 -->
+              <div style="margin-bottom: 0.5rem;">
+                <strong style="color: #0f172a; font-size: 0.92rem;">Project & Delivery Governance</strong>
+                <ul style="padding-left: 1.25rem; margin-top: 0.25rem; font-size: 0.9rem; color: #475569;">
+                  <li>Defined scope, timelines, milestones, and governance KPIs for infrastructure enhancement initiatives.</li>
+                  <li>Owned performance monitoring and governance reporting for 100+ cross-functional resources across APAC, EMEA, US, and MEX (tracking ticket volumes, CSAT surveys, attendance, SLA/KPI adherence, and productivity metrics).</li>
+                  <li>Leveraged Copilot, Power Query, Excel, and Power BI to orchestrate enterprise-scale datasets for infrastructure performance analytics.</li>
+                </ul>
+              </div>
+
+              <!-- Domain 2 -->
+              <div style="margin-bottom: 0.5rem;">
+                <strong style="color: #0f172a; font-size: 0.92rem;">Business Analysis & Documentation</strong>
+                <ul style="padding-left: 1.25rem; margin-top: 0.25rem; font-size: 0.9rem; color: #475569;">
+                  <li>Conducted stakeholder workshops to gather business requirements; prepared Business Requirement Documents (BRD) and Functional Specifications.</li>
+                  <li>Led technology KPI validation across multiple systems to deliver actionable insights and support executive decision-making.</li>
+                  <li>Designed process flows for Global Service Desk standardization initiatives.</li>
+                </ul>
+              </div>
+
+              <!-- Domain 3 -->
+              <div style="margin-bottom: 0.5rem;">
+                <strong style="color: #0f172a; font-size: 0.92rem;">Risk & Performance Management</strong>
+                <ul style="padding-left: 1.25rem; margin-top: 0.25rem; font-size: 0.9rem; color: #475569;">
+                  <li>Identified operational risks affecting SLA compliance and implemented mitigation plans.</li>
+                  <li>Led 3 Lean initiatives saving $100K+ annually and initiated 10+ process-improvement programs to enhance service quality.</li>
+                  <li>Maintained operational and financial data pipelines into Excel and Power BI for executive performance visibility.</li>
+                </ul>
+              </div>
+
+              <!-- Domain 4 -->
+              <div style="margin-bottom: 0.5rem;">
+                <strong style="color: #0f172a; font-size: 0.92rem;">Vendor & Budget Governance</strong>
+                <ul style="padding-left: 1.25rem; margin-top: 0.25rem; font-size: 0.9rem; color: #475569;">
+                  <li>Governed a $700K+ vendor budget across Telecom, Dispatch, and FTEs.</li>
+                  <li>Reviewed contracts, approved invoices against deliverables, and tracked vendor performance, SLA adherence, and penalty clauses.</li>
+                  <li>Conducted quarterly budget reviews and financial cost tracking.</li>
+                </ul>
+              </div>
+
+              <!-- Domain 5 -->
+              <div>
+                <strong style="color: #0f172a; font-size: 0.92rem;">Stakeholder & Client Management</strong>
+                <ul style="padding-left: 1.25rem; margin-top: 0.25rem; font-size: 0.9rem; color: #475569;">
+                  <li>Acted as PMO SPOC between business leaders, global delivery managers, and third-party vendors.</li>
+                  <li>Presented weekly and monthly governance dashboards to senior leadership.</li>
+                  <li>Managed communication for quarterly BCP activities and audit reviews, ensuring compliance within SLA and budget constraints.</li>
+                </ul>
+              </div>
             </div>
           </div>
 
           <div class="resume-section">
-            <h2 class="resume-section-title">Education & Certifications</h2>
-            <p><strong>B.Tech in Computer Science & Engineering</strong> — High Honors (GPA: 3.9/4.0)</p>
-            <p><strong>Certifications:</strong> AWS Certified Solutions Architect Professional • Certified Kubernetes Administrator (CKA) • Meta Senior Full-Stack Engineer</p>
+            <h2 class="resume-section-title">KEY ACHIEVEMENTS</h2>
+            <ul style="padding-left: 1.25rem; font-size: 0.92rem; color: #334155; line-height: 1.6;">
+              <li>52–65% L0 ticket deflection via AI automation (11-month sustained performance).</li>
+              <li>Overall service desk interaction deflection improved to 22% (+1.8% gain).</li>
+              <li>7+ Internal Wipro Delivery & Recognition Awards (Best Debutant, Victory League x2, TopGear, Inspiring Performance).</li>
+              <li>Strong delivery compliance for CMMI & BCP audits; closed BCP for 5+ international accounts.</li>
+              <li>Personal showcase projects: Built tractechspares.com and policiesxray.com end-to-end with AI tooling for acquaintances.</li>
+              <li>25% reduction in annual vendor spend (FY2024).</li>
+            </ul>
           </div>
-        </div>
-      `;
-      overlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-  });
 
-  // Blog Article Reader Modal trigger
-  document.querySelectorAll('.open-article-modal').forEach(card => {
-    card.addEventListener('click', () => {
-      const id = card.getAttribute('data-id');
-      const article = window.portfolioData.articles.find(a => a.id === id);
-      if (!article) return;
+          <div class="resume-section">
+            <h2 class="resume-section-title">CORE COMPETENCIES</h2>
+            <p style="font-size: 0.9rem; margin-bottom: 0.4rem; color: #334155;"><strong>Project Lifecycle & Governance:</strong> MSA/SOW, Billing & Invoice, SLA/KPI Adherence, Automation, Productivity, Data Orchestration, Employee Stack Ranking</p>
+            <p style="font-size: 0.9rem; margin-bottom: 0.4rem; color: #334155;"><strong>ITSM & Tools:</strong> ServiceNow, BMC Helix, Power BI (Dashboard Development), Advanced Excel (Pivot, Power Query, Automation), Power Automate</p>
+            <p style="font-size: 0.9rem; margin-bottom: 0.4rem; color: #334155;"><strong>Vendor & Operations Management:</strong> Multi-Vendor Governance ($2.2M+ Cumulative Budget), Contract/PO/Invoice Lifecycle, Band-Wise PPC Tracking</p>
+            <p style="font-size: 0.9rem; margin-bottom: 0.4rem; color: #334155;"><strong>Stakeholder Management:</strong> Global Delivery Teams (100+ Resources APAC/EMEA/US/MEX), Vendors, Procurement, Finance, Leadership</p>
+            <p style="font-size: 0.9rem; margin-bottom: 0.4rem; color: #334155;"><strong>Governance & Compliance:</strong> ITIL, Lean Six Sigma, CMMI, BCP, MS 365 / Project Trackers</p>
+            <p style="font-size: 0.9rem; color: #334155;"><strong>Automation & Analytics:</strong> AI-based L0 Automation, Executive Dashboards, KPI Standardization, Reporting Automation (10–20 hrs/wk saved)</p>
+          </div>
 
-      modalTitle.textContent = article.title;
-      modalBody.innerHTML = `
-        <div style="margin-bottom: 1.5rem; border-radius: 12px; overflow: hidden;">
-          <img src="${article.image}" alt="${article.title}" style="width: 100%; max-height: 380px; object-fit: cover;">
-        </div>
-        <div style="display: flex; gap: 1rem; align-items: center; font-size: 0.85rem; color: var(--text-subtle); margin-bottom: 1.5rem;">
-          <span style="color: var(--accent-cyan); font-weight: 600;">${article.category}</span>
-          <span>•</span>
-          <span>${article.date}</span>
-          <span>•</span>
-          <span>${article.readTime}</span>
-        </div>
-        <div style="font-size: 1.05rem; line-height: 1.8; color: var(--text-muted);" class="article-rich-text">
-          ${article.content}
+          <div class="resume-section">
+            <h2 class="resume-section-title">SKILLS – TOOLS & TECHNOLOGIES</h2>
+            <p style="font-size: 0.9rem; margin-bottom: 0.35rem; color: #334155;">• Power BI | DAX | SQL | Data Modeling | Advanced Excel | Power Query | M365 Copilot | Process Automation</p>
+            <p style="font-size: 0.9rem; margin-bottom: 0.35rem; color: #334155;">• Project Management | ITIL Framework | SLA & KPI Management | Global Delivery Governance</p>
+            <p style="font-size: 0.9rem; margin-bottom: 0.35rem; color: #334155;">• SAP Ariba | Contract Management | PO & Invoice Governance | Financial Controls | Cost Optimization | Vendor Management</p>
+            <p style="font-size: 0.9rem; color: #334155;">• Agile Methodology | Lean Methodology | Business Process Improvement | Business Continuity Plans</p>
+          </div>
+
+          <div class="resume-section">
+            <h2 class="resume-section-title">PROJECT HIGHLIGHTS</h2>
+            <p style="font-size: 0.9rem; margin-bottom: 0.45rem; color: #334155;"><strong>Barista AI Chatbot:</strong> Machine learning ticket classification & service desk deflection achieving 52–65% L0 deflection sustained over 11 months.</p>
+            <p style="font-size: 0.9rem; margin-bottom: 0.45rem; color: #334155;"><strong>AWS-Based BCP Automation:</strong> Transitioned manual DR workflows to an AWS automated orchestration platform, closing BCP for 5+ international clients with 100% CMMI audit compliance.</p>
+            <p style="font-size: 0.9rem; margin-bottom: 0.45rem; color: #334155;"><strong>IDARS Reporting Platform:</strong> Built a fully automated, no-human-touch ServiceNow reporting pipeline and Power BI model saving 10–20 hours of manual effort weekly.</p>
+            <p style="font-size: 0.9rem; color: #334155;"><strong>Personal Projects (Built with AI Tooling):</strong> Tractech Spares (tractechspares.com) & PoliciesXray (policiesxray.com) built end-to-end with AI tooling for acquaintances.</p>
+          </div>
+
+          <div class="resume-section" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+            <div>
+              <h2 class="resume-section-title" style="margin-bottom: 0.5rem;">EDUCATION</h2>
+              <p style="font-size: 0.88rem; font-weight: 700; color: #0f172a;">M.Tech – Computing Systems and Infrastructure</p>
+              <p style="font-size: 0.85rem; color: #475569;">BITS Pilani (WILP) — Pilani, Rajasthan (11/2025)</p>
+              <p style="font-size: 0.78rem; color: #64748b; margin-top: 0.2rem;">Concurrent with Wipro full-time employment</p>
+              <p style="font-size: 0.88rem; font-weight: 700; color: #0f172a; margin-top: 0.5rem;">B.C.A – Computer Application</p>
+              <p style="font-size: 0.85rem; color: #475569;">GLA University — Mathura, UP (05/2021)</p>
+            </div>
+
+            <div>
+              <h2 class="resume-section-title" style="margin-bottom: 0.5rem;">AWARDS</h2>
+              <p style="font-size: 0.75rem; color: #64748b; font-style: italic; margin-bottom: 0.35rem;">Internal Wipro recognition programs</p>
+              <ul style="padding-left: 1.1rem; font-size: 0.85rem; color: #334155;">
+                <li>Best Debutant</li>
+                <li>Victory League (x2)</li>
+                <li>Inspiring Performance</li>
+                <li>Habit Flagbearer (x2)</li>
+                <li>TopGear Challenge Reward (x2)</li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 class="resume-section-title" style="margin-bottom: 0.5rem;">CREDENTIALS</h2>
+              <p style="font-size: 0.8rem; font-weight: 700; color: #0f172a; margin-bottom: 0.2rem;">Certifications:</p>
+              <ul style="padding-left: 1.1rem; font-size: 0.82rem; color: #334155; margin-bottom: 0.5rem;">
+                <li>SC-401 — Microsoft Certified: Information Security Administrator Associate</li>
+                <li>PL-300 — Microsoft Certified: Power BI Data Analyst Associate</li>
+                <li>PL-700</li>
+              </ul>
+              <p style="font-size: 0.8rem; font-weight: 700; color: #0f172a; margin-bottom: 0.2rem;">Coursework / Skills:</p>
+              <ul style="padding-left: 1.1rem; font-size: 0.82rem; color: #334155;">
+                <li>SQL</li>
+                <li>Python</li>
+                <li>Linux</li>
+              </ul>
+            </div>
+          </div>
         </div>
       `;
       overlay.classList.add('active');

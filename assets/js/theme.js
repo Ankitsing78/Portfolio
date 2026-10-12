@@ -15,6 +15,7 @@
   setTheme(initialTheme);
 
   document.addEventListener('DOMContentLoaded', () => {
+    updateToggleIcons(root.getAttribute('data-theme') || initialTheme);
     const toggleBtns = document.querySelectorAll('.theme-toggle-btn');
     toggleBtns.forEach(btn => {
       btn.addEventListener('click', () => {
